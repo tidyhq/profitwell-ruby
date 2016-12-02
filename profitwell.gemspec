@@ -6,8 +6,8 @@ require 'profitwell/version'
 Gem::Specification.new do |spec|
   spec.name          = "profitwell-ruby"
   spec.version       = Profitwell::VERSION
-  spec.authors       = ["rkcudjoe"]
-  spec.email         = ["rkcudjoe@gmail.com"]
+  spec.authors       = ["rkcudjoe", "Sean Mulligan"]
+  spec.email         = ["rkcudjoe@gmail.com", "sean.mulligan85@gmail.com"]
 
   spec.summary       = %q{A Ruby toolkit for the Profitwell Transactions API v1 }
   spec.description   = %q{Add subscriptions to your ProfitWell account and then automatically have accurate and reliable SaaS metrics.}
@@ -30,4 +30,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "vcr", "~> 3.0", ">= 3.0.3"
+  spec.add_development_dependency "dotenv", "~> 2.1"
+  spec.add_development_dependency "pry", "~> 0.10.3"
+  spec.add_development_dependency "webmock", "~> 2.1.0", ">= 2.1.0"
+
+  spec.add_runtime_dependency "faraday", "~> 0.9.2"
+  spec.add_runtime_dependency 'faraday_middleware', '~> 0.10.0'
+  spec.add_runtime_dependency "json", "~> 1.8", ">= 1.8.3"
 end
