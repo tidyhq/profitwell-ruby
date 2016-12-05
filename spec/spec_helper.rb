@@ -3,3 +3,4 @@ require 'profitwell'
 require 'dotenv'
 require 'vcr'
 require 'support/vcr_setup.rb'
+Dotenv.load(".env.local")
