@@ -29,4 +29,9 @@ class Profitwell::Client
       req.response :json, content_type: /\bjson$/
     end
   end
+
+  def parse_response(response)
+    responses = [200, 201, 400, 401, 403, 404, 406, 409, 429, 500, 502, 503]
+    responses.include?(response.status) ? response.body : "Unexpected Error from profitwell-ruby"
+  end
 end
