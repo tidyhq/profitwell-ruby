@@ -2,6 +2,7 @@ require 'spec_helper'
 
 module Profitwell
   describe Client do
+
     before(:each) do
       @client = Profitwell::Client.new(ENV['API_TOKEN'])
     end

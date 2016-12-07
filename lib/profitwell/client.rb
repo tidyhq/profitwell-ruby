@@ -1,6 +1,7 @@
 Dir[File.join(__dir__, 'modules', '*.rb')].each {|file| require file }
 
 class Profitwell::Client
+  include Transaction
 
   attr_reader :auth_token
 
@@ -25,7 +26,7 @@ class Profitwell::Client
       req.headers['Content-Type'] = "application/json"
       req.headers['User-Agent'] = "Profitwell-Ruby v#{Profitwell::VERSION}"
       req.headers['Accept'] = "*/*"
-      req.headers['Authorization'] = "Bearer #{auth_token}"
+      req.headers['Authorization'] = "#{auth_token}"
       req.response :json, content_type: /\bjson$/
     end
   end
