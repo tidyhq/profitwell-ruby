@@ -2,6 +2,7 @@ Dir[File.join(__dir__, 'modules', '*.rb')].each {|file| require file }
 
 class Profitwell::Client
   include Transaction
+  include TransactionDetail
 
   attr_reader :auth_token
 
