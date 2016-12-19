@@ -1,6 +1,6 @@
 # Profitwell
 
-A Ruby toolkit for the [Profitwell](http://home.profitwell.com/)Transcations API
+A Ruby toolkit for the [Profitwell](http://home.profitwell.com/) Transactions API
 
 ## Installation
 
@@ -20,11 +20,131 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Calls for the Profitwell API are relative to the base url
+`https://api.profitwell.com/v1/`
+
+API actions are available as methods on the client object. Currently, the
+Profitwell client has the following methods:
+
+| Action               	               | Method             					                                                    |
+|:-------------------------------------|:---------------------------------------------------------------------------------|
+| **Transactions**                     |                        					                                                |
+| Retrieve all transaction data        | `#transactions`                                                                  |
+| Post a new subscription customer     | `#new_customer(email, plan_name, plan_interval, plan_value, start_date, options={})` |
+| **Transaction Details**              |
+| Retrieve all transactions for a user | `#transaction_detail(user_id)`                                                   |
+| Update existing user's subscription  | `#update_subscription(user_id, plan_name, plan_interval, plan_value, start_date)`|
+| Delete existing user's subscription  | `#delete_user(user_id)`                                                          |
 
 ## Usage Examples
 
-TODO: Write usage examples here
+**Authentication**
+
+First grab your API_KEY found in [your account settings](https://www.profitwell.com/app/account/integrations) and initialize a new client.
+
+After that, you can integrate with other services.
+
+```ruby
+require "profitwell"
+
+API_KEY = "<your_api_key>"
+
+profitwell_client = Profitwell::Client.new(API_KEY)
+```
+
+Here are some common use cases for the Profitwell API client.
+
+**You can retrieve all transaction data from your account.**
+
+```ruby
+profitwell_client.transactions
+
+# =>
+[
+  {
+    "user_id": "pwu_1OHgWo45JPuI",
+    "subscription_id": "pws_J2ISBvWMP6Fs",
+    "email": "superman@profitwell.com",
+    "plan_name": "Clark Kent Premium",
+    "plan_interval": "Month",
+    "plan_value": 10,
+    "currency": "usd",
+    "start_date": "2015-08-27T06:00:00Z",
+    "end_date": "2016-03-27T06:00:00Z",
+    "is_pending_processing": false
+  },
+  {
+    "user_id": "pwu_3lSKeiSlTyq",
+    "subscription_id": "pws_xMIOLQ5iks8R",
+    "email": "batman@profitwell.com",
+    "plan_name": "Bruce Wayne Enterprise",
+    "plan_interval": "Year",
+    "plan_value": 120,
+    "currency": "usd",
+    "start_date": "2015-08-09T06:00:00Z",
+    "end_date": null,
+    "is_pending_processing": false
+  }
+]
+```
+
+**You can retrieve all transactions for a given user**
+
+```ruby
+profitwell_client.transaction_detail("pwu_3lSKeiSlTyq")
+
+# =>
+[
+  {
+    "user_id": "pwu_3lSKeiSlTyq",
+    "subscription_id": "pws_xMIOLQ5iks8R",
+    "email": "batman@profitwell.com",
+    "plan_name": "Bruce Wayne Enterprise",
+    "plan_interval": "Year",
+    "plan_value": 120,
+    "currency": "usd",
+    "start_date": "2015-06-01T00:00:00Z",
+    "end_date": "2015-06-15T00:00:00Z"
+    "is_pending_processing": false
+  },
+  {
+    "user_id": "pwu_3lSKeiSlTyq",
+    "subscription_id": "pws_xMIOLQ5iks8R",
+    "email": "batman@profitwell.com",
+    "plan_name": "Bruce Wayne Enterprise",
+    "plan_interval": "Year",
+    "plan_value": 240,
+    "currency": "usd",
+    "start_date": "2015-06-15T00:00:00Z",
+    "end_date": "2015-07-15T00:00:00Z",
+    "is_pending_processing": false
+  },
+  {
+    "user_id": "pwu_3lSKeiSlTyq",
+    "subscription_id": "pws_xMIOLQ5iks8R",
+    "email": "batman@profitwell.com",
+    "plan_name": "Bruce Wayne Premium",
+    "plan_interval": "Month",
+    "plan_value": 50,
+    "currency": "usd",
+    "start_date": "2015-07-15T00:00:00Z",
+    "end_date": "2015-10-01T00:00:00Z",
+    "is_pending_processing": false
+  },
+  {
+    "user_id": "pwu_3lSKeiSlTyq",
+    "subscription_id": "pws_xMIOLQ5iks8R",
+    "email": "batman@profitwell.com",
+    "plan_name": "Bruce Wayne Premium",
+    "plan_interval": "Month",
+    "plan_value": 0,
+    "currency": "usd",
+    "start_date": "2015-10-01T00:00:00Z",
+    "end_date": null,
+    "is_pending_processing": false
+  }
+]
+```
 
 ## Development
 

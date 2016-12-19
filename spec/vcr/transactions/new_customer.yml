@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.profitwell.com/v1/transactions/?email=test@hookengine.com&plan_interval=Month&plan_name=New%20API%20Test%20Subscription&plan_value=10&start_date=2016-06-11T00:00:00Z
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Profitwell-Ruby v0.1.0
+      Accept:
+      - "*/*"
+      Authorization:
+      - C8F23218010A843C7725E2252DA803F4
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 500
+      message: INTERNAL SERVER ERROR
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/19.4.5
+      Date:
+      - Wed, 07 Dec 2016 02:48:30 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/html
+      Vary:
+      - Cookie
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: "<h1>Server Error (500)</h1>"
+    http_version: 
+  recorded_at: Wed, 07 Dec 2016 02:48:30 GMT
+recorded_with: VCR 3.0.3
