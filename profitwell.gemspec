@@ -6,8 +6,8 @@ require 'profitwell/version'
 Gem::Specification.new do |spec|
   spec.name          = "profitwell-ruby"
   spec.version       = Profitwell::VERSION
-  spec.authors       = ["rkcudjoe", "Sean Mulligan"]
-  spec.email         = ["rkcudjoe@gmail.com", "sean.mulligan85@gmail.com"]
+  spec.authors       = ["Raymond Cudjoe","Sean Mulligan","Hook Engine"]
+  spec.email         = ["rkcudjoe@gmail.com","sean.mulligan85@gmail.com","rkcudjoe@hookengine.com"]
 
   spec.summary       = %q{A Ruby toolkit for the Profitwell Transactions API v1 }
   spec.description   = %q{Add subscriptions to your ProfitWell account and then automatically have accurate and reliable SaaS metrics.}
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = "https://rubygems.org"
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
