@@ -36,6 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock", "~> 2.1.0", ">= 2.1.0"
 
   spec.add_runtime_dependency "faraday", "~> 0.9"
-  spec.add_runtime_dependency 'faraday_middleware', '~> 0.10.0'
+  spec.add_runtime_dependency 'faraday_middleware', '>= 0.10', '< 1.1'
   spec.add_runtime_dependency "json", "~> 1.8", ">= 1.8.3"
 end
